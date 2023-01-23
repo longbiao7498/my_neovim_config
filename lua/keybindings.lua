@@ -3,6 +3,7 @@ vim.g.maplocalleader = " "
 local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
 local opt = {noremap = true, silent = true }
+
 ---------------------------------------
 -- 取消 s 默认功能
 map("n", "s", "", opt)
@@ -229,5 +230,10 @@ pluginKeys.cmp = function(cmp)
         ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
     }
 end
+
+-- overwirte leap.vim(easymotion plugin) keymaps
+vim.keymap.set({'x', 'o', 'n'}, 'f', '<Plug>(leap-forward-to)')
+vim.keymap.set({'x', 'o', 'n'}, 'F', '<Plug>(leap-backward-to)')
+
 
 return pluginKeys
